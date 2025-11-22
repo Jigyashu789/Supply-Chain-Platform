@@ -10,6 +10,9 @@ import DemandForecast from './pages/DemandForecast';
 import SupplierDashboard from './pages/SupplierDashboard';
 import VisibilityDashboard from './pages/VisibilityDashboard';
 import RiskManagement from './pages/RiskManagement';
+import Optimization from './pages/Optimization';
+import ControlTower from './pages/ControlTower';
+import Partners from './pages/Partners';
 
 function App() {
   const { isAuthenticated, user, logout } = useAuth();
@@ -21,10 +24,13 @@ function App() {
   }
 
   const navItems = [
+    { path: '/control-tower', label: 'Control Tower', icon: '🗼' },
     { path: '/inventory', label: 'Inventory', icon: '📦' },
     { path: '/logistics', label: 'Logistics', icon: '🚛' },
     { path: '/forecast', label: 'Demand Forecast', icon: '📈' },
     { path: '/suppliers', label: 'Suppliers', icon: '🏭' },
+    { path: '/partners', label: 'Partners', icon: '🤝' },
+    { path: '/optimization', label: 'Optimization', icon: '🚀' },
     { path: '/visibility', label: 'Visibility', icon: '👁️' },
     { path: '/risks', label: 'Risk Management', icon: '⚠️' },
     { path: '/digital-twin', label: 'Digital Twin', icon: '🔮' },
@@ -97,11 +103,14 @@ function App() {
 
       <main className="main-content">
         <Routes>
-          <Route path="/" element={<Navigate to="/inventory" replace />} />
+          <Route path="/" element={<Navigate to="/control-tower" replace />} />
+          <Route path="/control-tower" element={<ControlTower />} />
+          <Route path="/partners" element={<Partners />} />
           <Route path="/inventory" element={<InventoryDashboard />} />
           <Route path="/logistics" element={<LogisticsDashboard />} />
           <Route path="/forecast" element={<DemandForecast />} />
           <Route path="/suppliers" element={<SupplierDashboard />} />
+          <Route path="/optimization" element={<Optimization />} />
           <Route path="/visibility" element={<VisibilityDashboard />} />
           <Route path="/risks" element={<RiskManagement />} />
           <Route path="/digital-twin" element={<DigitalTwin />} />

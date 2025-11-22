@@ -34,6 +34,30 @@ services:
       - "3002:3002"
     environment:
       - PORT=3002
+    volumes:
+      - ./backend/digital-twin-service:/app
+    networks:
+      - scm-network
+
+  optimization-service:
+    build: ./backend/optimization-service
+    ports:
+      - "3003:3003"
+    environment:
+      - PORT=3003
+    volumes:
+      - ./backend/optimization-service:/app
+    networks:
+      - scm-network
+
+  collaboration-service:
+    build: ./backend/collaboration-service
+    ports:
+      - "3004:3004"
+    environment:
+      - PORT=3004
+    volumes:
+      - ./backend/collaboration-service:/app
     networks:
       - scm-network
 
