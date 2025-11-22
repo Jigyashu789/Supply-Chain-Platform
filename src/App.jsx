@@ -1,6 +1,8 @@
 import { Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 import { useData } from './contexts/DataContext';
+import DigitalTwin from './pages/DigitalTwin';
+
 import Login from './pages/Login';
 import InventoryDashboard from './pages/InventoryDashboard';
 import LogisticsDashboard from './pages/LogisticsDashboard';
@@ -25,6 +27,7 @@ function App() {
     { path: '/suppliers', label: 'Suppliers', icon: '🏭' },
     { path: '/visibility', label: 'Visibility', icon: '👁️' },
     { path: '/risks', label: 'Risk Management', icon: '⚠️' },
+    { path: '/digital-twin', label: 'Digital Twin', icon: '🔮' },
   ];
 
   return (
@@ -101,6 +104,7 @@ function App() {
           <Route path="/suppliers" element={<SupplierDashboard />} />
           <Route path="/visibility" element={<VisibilityDashboard />} />
           <Route path="/risks" element={<RiskManagement />} />
+          <Route path="/digital-twin" element={<DigitalTwin />} />
         </Routes>
       </main>
 

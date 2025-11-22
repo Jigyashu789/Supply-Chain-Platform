@@ -47,6 +47,17 @@ function InventoryDashboard() {
                         <span className="kpi-title">Total Items</span>
                         <span style={{ fontSize: '1.5rem' }}>📊</span>
                     </div>
+                    <div className="kpi-value">{inventory.length}</div>
+                    <div className="kpi-change positive">
+                        <span>Active SKUs</span>
+                    </div>
+                </div>
+
+                <div className="kpi-card">
+                    <div className="kpi-header">
+                        <span className="kpi-title">Total Value</span>
+                        <span style={{ fontSize: '1.5rem' }}>💰</span>
+                    </div>
                     <div className="kpi-value">{totalValue.toLocaleString()}</div>
                     <div className="kpi-change positive">
                         <span>↑ 12%</span>
@@ -73,18 +84,6 @@ function InventoryDashboard() {
                     <div className="kpi-value">{criticalItems}</div>
                     <div className="kpi-change negative">
                         <span>Needs immediate action</span>
-                    </div>
-                </div>
-
-                <div className="kpi-card">
-                    <div className="kpi-header">
-                        <span className="kpi-title">Turnover Rate</span>
-                        <span style={{ fontSize: '1.5rem' }}>🔄</span>
-                    </div>
-                    <div className="kpi-value">4.2x</div>
-                    <div className="kpi-change positive">
-                        <span>↑ 8%</span>
-                        <span className="text-tertiary" style={{ fontWeight: 'normal' }}>vs last quarter</span>
                     </div>
                 </div>
             </div>

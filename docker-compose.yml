@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    build: ./backend/api-gateway
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - AUTH_SERVICE_URL=http://auth-service:3001
+      - DIGITAL_TWIN_SERVICE_URL=http://digital-twin-service:3002
+    depends_on:
+      - auth-service
+      - digital-twin-service
+    networks:
+      - scm-network
+
+  auth-service:
+    build: ./backend/auth-service
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - JWT_SECRET=dev-secret-key
+      - DB_HOST=postgres
+    depends_on:
+      - postgres
+    networks:
+      - scm-network
+
+  digital-twin-service:
+    build: ./backend/digital-twin-service
+    ports:
+      - "3002:3002"
+    environment:
+      - PORT=3002
+    networks:
+      - scm-network
+
+  postgres:
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=scm_platform
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - scm-network
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - scm-network
+
+networks:
+  scm-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
